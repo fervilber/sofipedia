@@ -1,0 +1,11 @@
+[
+  {"game": "Zelda", "title": "Corazones infinitos", "description": "Ve al bosque y toca la melodía secreta para conseguir corazones infinitos."},
+  {"game": "Mario", "title": "Salto infinito", "description": "Pulsa A justo antes de caer para saltar sin parar."},
+  {"game": "Animal Crossing", "title": "Campanas rápidas", "description": "Habla con Tom Nook a las 3:33am para un regalo especial."},
+  {"game": "Zelda", "title": "Espada secreta", "description": "Encuentra la cueva oculta para conseguir la espada secreta."},
+  {"game": "Minecraft", "title": "Diamantes fáciles", "description": "Cava en la capa 12 y usa una pala con fortuna para encontrar más diamantes."},
+  {"game": "Pokémon", "title": "Pokémon shiny", "description": "Aumenta tus probabilidades de encontrar un shiny usando el método Masuda."},
+  {"game": "Mario Kart", "title": "Turbo de salida", "description": "Pulsa el acelerador justo cuando el semáforo esté en rojo para un turbo extra."},
+  {"game": "Zelda", "title": "Rupias infinitas", "description": "Rompe todas las vasijas del castillo y vuelve a entrar para conseguir más rupias."},
+  {"game": "Animal Crossing", "title": "Árbol de dinero", "description": "Planta una bolsa de bayas doradas para que crezca un árbol de dinero."}
+]
