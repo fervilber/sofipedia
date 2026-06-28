@@ -7,3 +7,5 @@
     - Pokédex integrada con PokeAPI (Nombre, Tipo en español, Altura, Peso).
     - Apartados pendientes de implementar: Blog, Sofidioma, Tienda.
 - **Próximos Pasos:** Implementar funcionalidad en Blog y Sofidioma.
+- **Sesión Finalizada:** 26/06/2026. Proyecto en estado funcional. Próxima tarea: Implementar Blog y Sofidioma.
+- **Sesión Finalizada:** 26/06/2026. Proyecto en estado funcional. Próxima tarea: Implementar Blog y Sofidioma.
