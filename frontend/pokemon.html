@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <style>
-        body { font-family: 'Quicksand', sans-serif; background: #e3f2fd; text-align: center; }
-        input { padding: 10px; border-radius: 20px; border: 2px solid #fff9c4; }
-        button { padding: 10px 20px; border-radius: 20px; border: none; background: #fff9c4; cursor: pointer; color: #fbc02d; }
+        body { font-family: 'Quicksand', sans-serif; background: #e3f2fd; text-align: center; color: #546e7a; }
+        input { padding: 10px; border-radius: 20px; border: 2px solid #fff9c4; margin-bottom: 10px; }
+        button { padding: 10px 20px; border-radius: 20px; border: none; background: #fff9c4; cursor: pointer; color: #fbc02d; font-weight: bold; }
+        #pokemon-result { background: white; padding: 20px; border-radius: 20px; display: inline-block; min-width: 300px; margin-top: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
     </style>
 </head>
 <body>
@@ -22,14 +23,23 @@
         };
         async function buscarPokemon() {
             const name = document.getElementById('pokeName').value.toLowerCase();
-            const res = await fetch('https://pokeapi.co/api/v2/pokemon/' + name);
-            if (res.ok) {
-                const data = await res.json();
-                const tipos = data.types.map(t => tiposES[t.type.name] || t.type.name).join(', ');
-                document.getElementById('pokemon-result').innerHTML = 
-                    '<h2>' + data.name.toUpperCase() + '</h2>' +
-                    '<img src="' + data.sprites.front_default + '" style="width:150px;">' +
-                    '<p>Tipo: ' + tipos + '</p>';
+            if(!name) return;
+            try {
+                const res = await fetch('https://pokeapi.co/api/v2/pokemon/' + name);
+                if (res.ok) {
+                    const data = await res.json();
+                    const tipos = data.types.map(t => tiposES[t.type.name] || t.type.name).join(', ');
+                    document.getElementById('pokemon-result').innerHTML = 
+                        '<h2>' + data.name.charAt(0).toUpperCase() + data.name.slice(1) + '</h2>' +
+                        '<img src="' + data.sprites.front_default + '" style="width:150px;">' +
+                        '<p><strong>Tipo:</strong> ' + tipos + '</p>' +
+                        '<p><strong>Altura:</strong> ' + (data.height / 10) + ' m</p>' +
+                        '<p><strong>Peso:</strong> ' + (data.weight / 10) + ' kg</p>';
+                } else {
+                    document.getElementById('pokemon-result').innerHTML = '<p>¡No encontré a ese Pokémon!</p>';
+                }
+            } catch (error) {
+                document.getElementById('pokemon-result').innerHTML = '<p>Error buscando el Pokémon.</p>';
             }
         }
     </script>
