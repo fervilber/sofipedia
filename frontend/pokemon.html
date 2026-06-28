@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sofipedia - Pokédex</title>
+    <style>
+        body { font-family: 'Comic Sans MS', cursive; background-color: #f0f8ff; text-align: center; }
+        .container { max-width: 600px; margin: auto; padding: 20px; }
+        input { padding: 10px; font-size: 16px; border: 2px solid #ffcc00; border-radius: 10px; }
+        button { padding: 10px 20px; font-size: 16px; background-color: #ffcc00; border: none; border-radius: 10px; cursor: pointer; }
+        #pokemon-result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¡La Pokédex de Sofía! 🐾</h1>
+        <input type="text" id="pokeName" placeholder="Escribe un Pokémon...">
+        <button onclick="buscarPokemon()">¡Buscar!</button>
+        <div id="pokemon-result"></div>
+    </div>
+
+    <script>
+        async function buscarPokemon() {
+            const name = document.getElementById('pokeName').value.toLowerCase();
+            if(!name) return;
+            const res = await fetch('https://pokeapi.co/api/v2/pokemon/' + name);
+            if (res.ok) {
+                const data = await res.json();
+                document.getElementById('pokemon-result').innerHTML = 
+                    '<h2>' + data.name.toUpperCase() + '</h2>' +
+                    '<img src="' + data.sprites.front_default + '" style="width:200px;">';
+            } else {
+                document.getElementById('pokemon-result').innerHTML = '<p>¡No encontré a ese Pokémon!</p>';
+            }
+        }
+    </script>
+</body>
+</html>
