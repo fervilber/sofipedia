@@ -4,20 +4,17 @@
     <meta charset="UTF-8">
     <title>Sofipedia - Pokédex</title>
     <style>
-        body { font-family: 'Comic Sans MS', cursive; background-color: #f0f8ff; text-align: center; }
-        .container { max-width: 600px; margin: auto; padding: 20px; }
-        input { padding: 10px; font-size: 16px; border: 2px solid #ffcc00; border-radius: 10px; }
-        button { padding: 10px 20px; font-size: 16px; background-color: #ffcc00; border: none; border-radius: 10px; cursor: pointer; }
-        #pokemon-result { margin-top: 20px; }
+        body { font-family: 'Arial', sans-serif; background-color: #f0f8ff; text-align: center; padding: 20px; }
+        .back-btn { display: inline-block; margin-bottom: 20px; padding: 10px 20px; background: #333; color: white; text-decoration: none; border-radius: 10px; }
+        #pokemon-result { background: white; padding: 20px; border-radius: 20px; display: inline-block; min-width: 300px; margin-top: 20px; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>¡La Pokédex de Sofía! 🐾</h1>
-        <input type="text" id="pokeName" placeholder="Escribe un Pokémon...">
-        <button onclick="buscarPokemon()">¡Buscar!</button>
-        <div id="pokemon-result"></div>
-    </div>
+    <a href="../index.html" class="back-btn">⬅️ Volver al Menú</a>
+    <h1>Pokédex de Sofía 🐾</h1>
+    <input type="text" id="pokeName" placeholder="Nombre Pokémon...">
+    <button onclick="buscarPokemon()">Buscar</button>
+    <div id="pokemon-result"></div>
 
     <script>
         async function buscarPokemon() {
@@ -28,7 +25,9 @@
                 const data = await res.json();
                 document.getElementById('pokemon-result').innerHTML = 
                     '<h2>' + data.name.toUpperCase() + '</h2>' +
-                    '<img src="' + data.sprites.front_default + '" style="width:200px;">';
+                    '<img src="' + data.sprites.front_default + '" style="width:200px;">' +
+                    '<p>Tipo: ' + data.types.map(t => t.type.name).join(', ') + '</p>' +
+                    '<p>Altura: ' + data.height + ' | Peso: ' + data.weight + '</p>';
             } else {
                 document.getElementById('pokemon-result').innerHTML = '<p>¡No encontré a ese Pokémon!</p>';
             }
