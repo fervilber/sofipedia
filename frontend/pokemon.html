@@ -2,34 +2,34 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Sofipedia - Pokédex</title>
     <style>
-        body { font-family: 'Arial', sans-serif; background-color: #f0f8ff; text-align: center; padding: 20px; }
-        .back-btn { display: inline-block; margin-bottom: 20px; padding: 10px 20px; background: #333; color: white; text-decoration: none; border-radius: 10px; }
-        #pokemon-result { background: white; padding: 20px; border-radius: 20px; display: inline-block; min-width: 300px; margin-top: 20px; }
+        body { font-family: 'Quicksand', sans-serif; background: #e3f2fd; text-align: center; }
+        input { padding: 10px; border-radius: 20px; border: 2px solid #fff9c4; }
+        button { padding: 10px 20px; border-radius: 20px; border: none; background: #fff9c4; cursor: pointer; color: #fbc02d; }
     </style>
 </head>
 <body>
-    <a href="../index.html" class="back-btn">⬅️ Volver al Menú</a>
-    <h1>Pokédex de Sofía 🐾</h1>
     <input type="text" id="pokeName" placeholder="Nombre Pokémon...">
     <button onclick="buscarPokemon()">Buscar</button>
     <div id="pokemon-result"></div>
 
     <script>
+        const tiposES = {
+            'normal': 'Normal', 'fire': 'Fuego', 'water': 'Agua', 'grass': 'Planta',
+            'electric': 'Eléctrico', 'ice': 'Hielo', 'fighting': 'Lucha', 'poison': 'Veneno',
+            'ground': 'Tierra', 'flying': 'Volador', 'psychic': 'Psíquico', 'bug': 'Bicho',
+            'rock': 'Roca', 'ghost': 'Fantasma', 'dragon': 'Dragón', 'steel': 'Acero', 'fairy': 'Hada'
+        };
         async function buscarPokemon() {
             const name = document.getElementById('pokeName').value.toLowerCase();
-            if(!name) return;
             const res = await fetch('https://pokeapi.co/api/v2/pokemon/' + name);
             if (res.ok) {
                 const data = await res.json();
+                const tipos = data.types.map(t => tiposES[t.type.name] || t.type.name).join(', ');
                 document.getElementById('pokemon-result').innerHTML = 
                     '<h2>' + data.name.toUpperCase() + '</h2>' +
-                    '<img src="' + data.sprites.front_default + '" style="width:200px;">' +
-                    '<p>Tipo: ' + data.types.map(t => t.type.name).join(', ') + '</p>' +
-                    '<p>Altura: ' + data.height + ' | Peso: ' + data.weight + '</p>';
-            } else {
-                document.getElementById('pokemon-result').innerHTML = '<p>¡No encontré a ese Pokémon!</p>';
+                    '<img src="' + data.sprites.front_default + '" style="width:150px;">' +
+                    '<p>Tipo: ' + tipos + '</p>';
             }
         }
     </script>

@@ -3,22 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sofipedia 🌟</title>
+    <title>Sofipedia</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%); min-height: 100vh; margin: 0; display: flex; flex-direction: column; align-items: center; }
-        h1 { color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); margin-top: 50px; }
-        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 30px; }
-        .card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); text-align: center; text-decoration: none; color: #ff69b4; font-weight: bold; font-size: 1.2em; transition: transform 0.2s; cursor: pointer; }
-        .card:hover { transform: scale(1.05); }
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+        body { font-family: 'Quicksand', sans-serif; background-color: #e3f2fd; margin: 0; display: flex; flex-direction: column; align-items: center; color: #546e7a; }
+        header { width: 100%; display: flex; justify-content: flex-end; padding: 20px; box-sizing: border-box; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: #4fc3f7; }
+        .nav-container { margin: 20px 0; }
+        .nav-btn { padding: 12px 25px; margin: 5px; border: none; border-radius: 25px; background: #fff9c4; cursor: pointer; font-family: 'Quicksand', sans-serif; font-size: 1rem; color: #fbc02d; transition: 0.3s; }
+        .nav-btn:hover { background: #fff59d; }
+        #content { width: 90%; max-width: 800px; background: white; padding: 20px; border-radius: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
     </style>
 </head>
 <body>
-    <h1>Sofipedia 🦄</h1>
-    <div class="grid">
-        <a href="frontend/blog.html" class="card">📸 Mi Blog</a>
-        <a href="frontend/pokemon.html" class="card">🐾 Pokédex</a>
-        <a href="frontend/sofidioma.html" class="card">💬 Sofidioma</a>
-        <a href="frontend/tienda.html" class="card">🛍️ Tienda</a>
+    <header><div class="logo">Sofipedia</div></header>
+    <div class="nav-container">
+        <button class="nav-btn" onclick="loadContent('blog')">Mi Blog</button>
+        <button class="nav-btn" onclick="loadContent('pokemon')">Pokédex</button>
+        <button class="nav-btn" onclick="loadContent('sofidioma')">Sofidioma</button>
+        <button class="nav-btn" onclick="loadContent('tienda')">Tienda</button>
     </div>
+    <div id="content">Selecciona un apartado para comenzar.</div>
+
+    <script>
+        function loadContent(page) {
+            const content = document.getElementById('content');
+            if(page === 'pokemon') {
+                content.innerHTML = '<iframe src="frontend/pokemon.html" style="width:100%; height:500px; border:none;"></iframe>';
+            } else {
+                content.innerHTML = '<h1>' + page.toUpperCase() + '</h1><p>Contenido en construcción...</p>';
+            }
+        }
+    </script>
 </body>
 </html>
