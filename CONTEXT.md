@@ -1,0 +1,9 @@
+# Proyecto: Sofipedia
+- **Descripción:** Web personal dinámica y divertida para mi hija.
+- **Tecnología:** HTML, CSS (Pastel), JS (Vanilla), desplegado en GitHub Pages.
+- **Diseño:** SPA (Single Page Application), logo circular a la izquierda, colores azul (#e3f2fd) y amarillo pastel (#fff9c4), botones y tipografía redondeados.
+- **Estado Actual:**
+    - Portada creada con navegación funcional.
+    - Pokédex integrada con PokeAPI (Nombre, Tipo en español, Altura, Peso).
+    - Apartados pendientes de implementar: Blog, Sofidioma, Tienda.
+- **Próximos Pasos:** Implementar funcionalidad en Blog y Sofidioma.
